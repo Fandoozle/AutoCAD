@@ -1,4 +1,5 @@
-;: DEFUN is the function
+;; This is a series of commands used to clean the "junk" out of a file to make it smaller and easier to import
+;; DEFUN is the function
 ;; C: tells autocad what the command is 
 ;; FOO is the command to start the script
 ;; () indicates no local variables and no arguments

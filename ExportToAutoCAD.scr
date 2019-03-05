@@ -1,2 +1,4 @@
+;; Uses the command "exporttoautocad" and sets the version to 2013
+;; other versions are 2000, 2004, 2007, 2010, 2013, 2018
 -exporttoautocad _F 2013 
 

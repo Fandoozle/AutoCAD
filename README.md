@@ -44,3 +44,7 @@ Also included is a dwg file for dynamic MEP blocks
 	
   setup
   This is a tool that preps a CAD base file to be used for MEP drawing. It clears useless data within the file making it a smaller size.
+  
+  breakAtIntersection
+  This routine breaks a line at a specified gap distance. 
+  To use it enter the distance desired and select the point at intersection then select the line to use to break with.

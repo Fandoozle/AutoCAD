@@ -41,10 +41,10 @@ Also included is a dwg file for dynamic MEP blocks
 	
   rotateMultipleBlocks
   Select specific block and you can rotate them around their basepoint
-	
-  setup
+
+	setup
   This is a tool that preps a CAD base file to be used for MEP drawing. It clears useless data within the file making it a smaller size.
-  
-  breakAtIntersection
+ 
+ 	breakAtIntersection
   This routine breaks a line at a specified gap distance. 
   To use it enter the distance desired and select the point at intersection then select the line to use to break with.

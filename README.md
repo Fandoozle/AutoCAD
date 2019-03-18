@@ -6,7 +6,7 @@ Also included is a dwg file for dynamic MEP blocks
   A list of view port scaling key factors
   
 	Dynamic Blocks and Such
-  A series of MEP dynamic blocks
+  A series of MEP and Architectural dynamic blocks
   
 	ExportToAutoCAD
   A simple script that exports the drawing 
@@ -35,11 +35,11 @@ Also included is a dwg file for dynamic MEP blocks
   
 	portme
   Lisp routine similar to the script "ExportToAutocad" which allows you to export the existing drawing to a 2013 
-	
-  rename-multiple-files
+
+ 	rename-multiple-files
   This is a simple batch file that can rename files in a folder
 	
-  rotateMultipleBlocks
+   	rotateMultipleBlocks
   Select specific block and you can rotate them around their basepoint
 
 	setup
@@ -48,3 +48,16 @@ Also included is a dwg file for dynamic MEP blocks
  	breakAtIntersection
   This routine breaks a line at a specified gap distance. 
   To use it enter the distance desired and select the point at intersection then select the line to use to break with.
+    
+ 	dwgFoo
+This cleans up the drawing by thawing and making all layers visible, then bursting all blocks in the drawing.
+Only use the bursting section for smaller drawings. It will take a while on larger ones.
+Overkills any overlap after the bursting
+Resets the layer properties to "ByLayer"
+Audits the drawing
+Purgest the drawing twice
+Zooms to extents then saves
+Pauses during each command to allow for processing
+
+ 	dwgClean
+This routine cleans up a drawing by running and audit and a purge VCD (very clean drawing)

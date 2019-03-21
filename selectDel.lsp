@@ -4,5 +4,5 @@
 ;; helps with tedious tasks
 (DEFUN C:SD ()
  (command "selectsimilar") ;; select similar elements
- (command "erase") ;; erase selection
+ (command "erase") ;; erase
 ) ;;END DEFUN

@@ -1,8 +1,9 @@
-;; A routine that uses the autocad comand "exporttoautocad"
-;; It exports the autocad file to a 2013 version
 (defun c:PORTME ( / )
+ (command "ZOOM" "E");; zoom to extents
  (vlax-for OpenDwgs (vla-get-documents (vlax-get-acad-object))
    (command "-exporttoautocad" "F" "2013" "" "")(command)(command)
  ) vlax-for
+(vl-load-com)
+(vla-SendCommand (vla-get-ActiveDocument (vlax-get-acad-object)) "_.CLOSE ")
  (princ)
 );; end PORTME

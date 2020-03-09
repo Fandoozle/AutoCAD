@@ -1,0 +1,56 @@
+Written By: Jason Piercey 07.31.01
+;Revised: 01.16.02 To handle multiple selection
+
+(defun C:Circle2Pline (/ CirEnt   CirElst  CirCen   CirRad   CirLay
+                         CirLin   CirClr   CirLts   PlineEnt ss
+                         i        );ss1)
+  
+  (setq ss (ssget '((0 . "CIRCLE"))))
+  (if ss
+    (progn
+      (setq i 0 );ss1 (ssadd))
+      (repeat (sslength ss)
+        (setq CirEnt (ssname ss i)              
+              CirElst (entget CirEnt)
+              CirCen  (cdr (assoc 10 CirElst))
+              CirRad  (cdr (assoc 40 CirElst))
+              CirLay  (cdr (assoc  8 CirElst))
+              CirLin  (cdr (assoc  6 CirElst))
+              CirClr  (cdr (assoc 62 CirElst))
+              CirLts  (cdr (assoc 48 CirElst))
+              )
+        
+        (setq PlineEnt (list '(0 . "LWPOLYLINE")
+                             '(100 . "AcDbEntity")
+                             (cons 8 CirLay)
+                             '(100 . "AcDbPolyline")
+                             '(90 . 2)
+                             '(70 . 1)
+                             '(43 . 0.0)
+                             '(38 . 0.0)
+                             '(39 . 0.0)
+                             (cons 10 (polar CirCen (* pi) CirRad))
+                             '(40 . 0.0)
+                             '(41 . 0.0)
+                             '(42 . 1.0)
+                             (cons 10 (polar CirCen (* pi 2.0) CirRad))
+                             '(40 . 0.0)
+                             '(41 . 0.0)
+                             '(42 . 1.0)
+                             '(210 0.0 0.0 1.0)
+                             )
+              )
+        
+        (if CirLin (setq PlineEnt (append PlineEnt (list (cons 6  CirLin)))))
+        (if CirClr (setq PlineEnt (append PlineEnt (list (cons 62 CirClr)))))
+        (if CirLts (setq PlineEnt (append PlineEnt (list (cons 48 CirLts)))))
+        (entmake PlineEnt)
+        (entdel CirEnt)
+        (setq i (1+ i))
+        )
+      )
+    )
+  ;(ssget "p")
+  (princ (strcat "\n"(itoa i) " Circles converted to LwPolylines"))
+  (princ)
+  )

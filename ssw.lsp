@@ -1,0 +1,35 @@
+;; Select Similar within Window
+;; Uses core SelectSimilar command
+;; Alan J. Thompson, 2013.07.30
+;; Saved from: https://forums.autodesk.com/t5/visual-lisp-autolisp-and-general/select-similar-for-current-window-view/td-p/8480689
+
+(defun c:SSW (/ filter ss1 ss2 ss3 add i e)
+
+(setq filter (if (eq (getvar 'CVPORT) 1)
+(list (cons 410 (getvar 'CTAB)))
+'((410 . "Model"))
+)
+)
+(princ "\nSelect objects to select similar: ")
+(if (and (setq ss1 (ssget filter))
+(progn (princ "\nSelect area to select similar object(s) within: ")
+(setq ss2 (ssget filter))
+)
+)
+(progn (command "_.selectsimilar" ss1 "")
+(if (setq ss3 (ssget "_I" filter))
+(progn (sssetfirst nil nil)
+(setq add (ssadd))
+(repeat (setq i (sslength ss3))
+(if (ssmemb (setq e (ssname ss3 (setq i (1- i)))) ss2)
+(setq add (ssadd e add))
+)
+)
+(sssetfirst nil add)
+)
+)
+)
+)
+(princ)
+)
+(c:ssw)

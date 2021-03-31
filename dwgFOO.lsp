@@ -10,19 +10,23 @@
 ;; Purgest the drawing twice
 ;; Zooms to extents then saves
 ;; Pauses during each command to allow for processing
-(DEFUN C:FOO ()
+(defun C:FOO ()
  (SETVAR "CMDECHO" 0);; turn echo off-turns off the read out of the following commands
  (command "-layer" "Thaw" "*" "ON" "*" "UNLOCK" "*" "S" "0" "") ;; thaws, turns on and unlocks all layers then sets the current layer to 0
   (while (= 1 (getvar "cmdactive")) (command pause)) ;; pauses while command is active
    (while (ssget "X" '((0 . "INSERT"))) ;; bursts all blocks in drawing. Checks to see if there are any in the drawing after
+  (while (= 1 (getvar "cmdactive")) (command pause)) ;; pauses while command is active
     (sssetfirst nil (ssget "X" (list )))
     (c:burst)
    ); end while
+  (while (= 1 (getvar "cmdactive")) (command pause)) ;; pauses while command is active
+(if (setq ss (ssget "_X" '((0 . "HATCH")))) ;; delete all hatches
+(command "_.hatchgenerateboundary" ss ""
+"_.erase" ss "")) ;; delete all hatch boundaries
+  (while (= 1 (getvar "cmdactive")) (command pause)) ;; pauses while command is active
  (repeat 4 ;; repeat following commands  4 times	
   (command "-overkill" all "" "");; overkill everything
  );;
-  (while (= 1 (getvar "cmdactive")) (command pause)) ;; pauses while command is active
- (command "SETBYLAYER" "ALL" "" "Y" "Y");; set all objects to be "ByLayer"
   (while (= 1 (getvar "cmdactive")) (command pause)) ;; pauses while command is active
  (command "AUDIT" "Y");; runs an audit to fix errors
   (while (= 1 (getvar "cmdactive")) (command pause)) ;; pauses while command is active

@@ -1,4 +1,4 @@
-;; this exports the current drawing to a latter version (2013) then closes the drawing without saving
+;; this exports the current drawing to a later version (2013) then closes the drawing without saving
 (defun c:PORTME ( / )
  (command "ZOOM" "E");; zoom to extents
  (vlax-for OpenDwgs (vla-get-documents (vlax-get-acad-object))

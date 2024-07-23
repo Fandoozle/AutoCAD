@@ -14,7 +14,7 @@
 ;;  in the drawing, without the use of the dialog interface.            ;;
 ;;                                                                      ;;
 ;;----------------------------------------------------------------------;;
-;;  Author:  Lee Mac, Copyright   2013  -  www.lee-mac.com              ;;
+;;  Author:  Lee Mac, Copyright © 2013  -  www.lee-mac.com              ;;
 ;;----------------------------------------------------------------------;;
 ;;  Version 1.0    -    10-02-2011                                      ;;
 ;;                                                                      ;;
@@ -79,7 +79,7 @@
 ;;  Displays a List Box allowing the user to make a selection ;;
 ;;  from the supplied data.                                   ;;
 ;;------------------------------------------------------------;;
-;;  Author: Lee Mac, Copyright   2012 - www.lee-mac.com       ;;
+;;  Author: Lee Mac, Copyright © 2012 - www.lee-mac.com       ;;
 ;;------------------------------------------------------------;;
 ;;  Arguments:                                                ;;
 ;;  title    - List Box Dialog title                          ;;
